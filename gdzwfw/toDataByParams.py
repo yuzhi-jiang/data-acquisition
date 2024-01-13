@@ -3,7 +3,7 @@ import time
 
 import requests
 
-from main import hne, getSign
+from reverse import hne, getSign
 
 param = {
     "type": "trading-type",
