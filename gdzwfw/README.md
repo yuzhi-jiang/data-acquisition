@@ -3,7 +3,7 @@ url: https://ygp.gdzwfw.gov.cn/#/44/jygg
 
 此处难点为：异步
 
-此url为广东省招考的
+此url为 广东省公共资源交易平台
 
 
 此sign是放在请求头中的
