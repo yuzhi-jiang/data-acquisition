@@ -1,10 +1,11 @@
 import json
 import time
 
+import pandas as pd
 import requests
-
+from openpyxl import Workbook
 from utils.require import *
-
+from utils.DataExport import DataExport
 
 import utils
 from reverse import hne, getSign
@@ -81,14 +82,19 @@ def getData2(param):
     res=req.post(param)
     return res.get_json()
 
+
+
+
 if __name__ == '__main__':
-    param['pageNo']=4
+
+
+# 将DataFrame对象导出到Excel文件
+
+    param['pageNo']=1
     page4=getData2(param)
-    print("page4",page4)
-
-    #sleep 2s
-    time.sleep(2)
-
-    param['pageNo']=5
+    data=page4['data']['pageData']
+    param['pageNo']=2
     page5=getData2(param)
-    print("page5",page5)
+    data.extend(page5['data']['pageData'])
+    print(data)
+    DataExport.write_data_to_excel("5.xlsx", [data],['noticeTypeDesc','noticeSecondTypeDesc','noticeThirdTypeDesc','siteName'])

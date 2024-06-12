@@ -4,7 +4,6 @@ from typing import Dict
 
 import requests
 
-
 class MyResponse:
     def __init__(self, response):
         self.response = response
@@ -28,14 +27,6 @@ class ResponseType(Enum):
     text = 'text/plain'
     pdf = 'application/pdf'
     html = 'text/html; charset=UTF-8'
-
-
-def test_emun(resType: ResponseType = None):
-    if type(resType) == ResponseType:
-        print(resType)
-        print(resType.value)
-        print(resType.name)
-        print(type(resType) == ResponseType)
 
 
 class MyRequest:
