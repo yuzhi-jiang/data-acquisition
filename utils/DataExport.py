@@ -9,6 +9,13 @@ from openpyxl.workbook import Workbook
 class DataExport:
     @staticmethod
     def write_data_to_excel(path,datas:list[list],include_title:list=None):
+        """
+        将数据写入excel文件
+        :param path: 文件路径
+        :param datas:  数据列表，每个元素是一个字典，表示一行数据
+        :param include_title: 自定义表头，如果为空则使用默认表头
+        :return:
+        """
         if type(datas) != list:
             print("数据格式错误")
             return
@@ -34,8 +41,17 @@ class DataExport:
         # 保存文件
         wb.save(path)
     @staticmethod
+    # 定义一个函数，将数据写入excel文件
     def write_data_to_excel_str(path,datas:str,include_title:list=None):
+        """
+        将json字符串写入excel文件
+        :param path: 文件路径
+        :param datas:  数据列表字符串(是一个json)，每个元素是一个字典，表示一行数据
+        :param include_title: 自定义表头，如果为空则使用默认表头
+        """
+        # 将json字符串转换为列表
         dataList=json.load(datas)
+        # 调用写入excel文件的函数
         DataExport.write_data_to_excel(path,[dataList],include_title)
 
 data=[

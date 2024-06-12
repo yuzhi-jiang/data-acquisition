@@ -97,4 +97,5 @@ if __name__ == '__main__':
     page5=getData2(param)
     data.extend(page5['data']['pageData'])
     print(data)
+    #写数据到excel
     DataExport.write_data_to_excel("5.xlsx", [data],['noticeTypeDesc','noticeSecondTypeDesc','noticeThirdTypeDesc','siteName'])
