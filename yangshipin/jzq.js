@@ -11,6 +11,7 @@ window.yspLogin= {
 }
 
 var cctvh5 = require('./cctvh5-openapi.js')
+const cctvh5core = require("./cctvh5-openapicore");
 
 
 document={
@@ -15211,6 +15212,43 @@ var jzq
                       , bu = n("b76e")
                       , wu = n.n(bu)
                       , _u = {};
+
+
+                    _u.getSdkData2 = function (e, n) {
+                        r = JSON.parse(JSON.stringify(e));
+                        i = "";
+                        o = "";
+                        a = lu.changeCookie();
+                        s = a.retSeqId;
+                        c = a.retRequestId;
+                        t.prev = 4;
+                        if(0 != Object.keys(r).length) {
+                            i = xu(r);
+                        }
+                        u = cctvh5;
+                        t.next = 9;
+                        tt = {
+                            yspappid: vu,
+                            input: "".concat(i, "-").concat(Zc(), "-").concat(s, "-").concat(c)
+                        }
+                        r = cctvh5core;
+                        console.log('i for yspsdkinput1',i)
+                        o = r.getSignature1(tt);
+                        var res2=o.then(res1=>{
+                            console.log('res1',res1)
+                            console.log('i for yspsdkinput',i)
+                           var resBoj={
+                            yspsdkinput: i,
+                            yspsdksign: res1.openapi_signature,
+                            seqId: s,
+                            "request-id": c
+                        }
+                            return Promise.resolve(resBoj)
+                        })
+
+                        return res2
+                    }
+                     window.getSdkData2= _u.getSdkData2
                     _u.getSdkData = function() {
                         var t = g(l().mark((function t(e, n) {
                             var r, i, o, a, s, c, u;
@@ -15300,6 +15338,44 @@ var jzq
                     function Ou(t) {
                         return ku.apply(this, arguments)
                     }
+
+                    function getParams(e){
+                                        n = e.vid;
+                                        r = e.version;
+                                        i = e.defn;
+                                        o = e.dtype;
+                                        a = e.cid;
+                                        s = e.adjust;
+                                        c = e.isVr;
+                                        u = "5910204";
+                                        f = parseInt((new Date).getTime() / 1e3);
+                                        d = Zc();
+                                        h = Hc(n, f, r, d, u);
+                                        p = {
+                                            vid: n,
+                                            platform: u,
+                                            guid: d,
+                                            cKey: h,
+                                            adjust: s,
+                                            encryptVer: "8.1",
+                                            dtype: "3",
+                                            sphttps: "1",
+                                            otype: "ojson",
+                                            appVer: "V1.0.0",
+                                            app_version: "V1.0.0"
+                                        };
+                                        i && (p.defn = i);
+                                        o && (p.dtype = o);
+                                        c && (p.uhd_flag = "4");
+                                        a && (p.cid = a);
+                                        p.rand_str = Bu();
+                                        p.channel = du;
+                                        // y = Ru(v({}, p));
+                                        y = Ru(p);
+                                        p["signature"] = y;
+                         return  p;
+                    }
+                    window.getParams=getParams
                     function ku() {
                         return ku = g(l().mark((function t(e) {
                             var n, r, i, o, a, s, c, u, f, d, h, p, y, g;
@@ -15346,11 +15422,19 @@ var jzq
                                             }
                                         },
                                         t.prev = 15,
-                                        t.next = 18,
-                                        Cu.getSdkData(p, (function(t) {
-                                            g.headers = v(v({}, g.headers), t)
+                                        t.next = 24,
+                                              t.abrupt("return", new Promise((function(resolve,t, e) {
+
+                                            resolve({
+                                                params:p,
+                                                headers:g.headers
+                                            })
                                         }
-                                        ));
+                                        )));
+                                        // Cu.getSdkData(p, (function(t) {
+                                        //     g.headers = v(v({}, g.headers), t)
+                                        // }
+                                        // ));
                                     case 18:
                                         t.next = 23;
                                         break;
@@ -15361,11 +15445,7 @@ var jzq
                                     case 23:
 
                                         return t.abrupt("return", new Promise((function(resolve,t, e) {
-                                            // console.log(t);
-                                            // console.log('p');
-                                            // console.log(p);
-                                            // // console.log(e);
-                                            // console.log('g');
+
                                             resolve({
                                                 params:p,
                                                 headers:g.headers
@@ -84558,107 +84638,11 @@ t=
     "yspappid": "519748109",
     "input": "3f0e3acaead7b1238c3c59347398bc21-lxzromby_kqzbkpnzo7-227-999999kOT9lXWmDF1719664943689"
 }
-getSdkData=window.getSdkData
+// getSdkData=window.getSdkData
 
-// getSdkData(t).then(res=>console.log('res',res))
-// cctvh5.getSignature(t).then(res=>console.log('res',res))
-
-
-
-
-
-
-
-
-
-tt={
-    "vid": "f0000543g0z",
-    "version": "V1.0.0",
-    "defn": "fhd",
-    "dtype": "3",
-    "rightNowPlay": false,
-    "cid": "",
-    "adjust": 1,
-    "isVr": false
-}
-
-
-
-
-
-
-//
-// Hc=window.Hc
-// //
-n='f0000543g0z'
-f = parseInt((new Date).getTime() / 1e3),
-// f=1719651825
-r='V1.0.0'
-d='lxzromby_kqzbkpnzo7'
-u='5910204'
-ck=Hc(n, f, r, d, u)
-h=ck
-// console.log(ck)
-// //--012AF6FE022FB797656A6E1AFD0A3CAE4B198387B6E6BAD4975A1B1E06E1692810D92071156C88E68068BA9B4F8B479E31EBD059ADB4BF9BA31E5B09EBD016F4680180B1D2CBF410BA7DD7AE2FD9DE0D770C4861C2081ABC2CB937704B967D2D1F2C1797B9DE0F258415EB67F8F7CD26431AC6E3BBBA568BC88EA7EC4D049634B4E4D70A273DA79848AD4B11A7363FA6BDBBD23FD044B2BC32525C85E74A979D4B
-// //--012AF6FE022FB797656A6E1AFD0A3CAE4B198387B6E6BAD4975A1B1E06E1692810D92071156C88E68068BA9B4F8B479E31EBD059ADB4BF9BA31E5B09EBD016F4680180B1D2CBF410BA7DD7AE2FD9DE0D770C4861C2081ABC2CB937704B967D2D1F2C1797B9DE0F258415EB67F8F7CD26431AC6E3BBBA568BC88EA7EC4D049634B4E4D70A273DA79848AD4B11A7363FA6BDBBD23FD044B2BC32525C85E74A979D4B
-
-Bu = function(t) {
-                        t = t || 10;
-                        for (var e = "ABCDEFGHIJKlMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", n = e.length, r = "", i = 0; i < t; i++)
-                            r += e.charAt(Math.floor(Math.random() * n));
-                        return r
-                    }
-
-v=window.v
-
-
-rand_str=Bu()
-du = "ysp_tx"
-s=1
-p = {
-                                            vid: n,
-                                            platform: u,
-                                            guid: d,
-                                            cKey: h,
-                                            adjust: s,
-                                            encryptVer: "8.1",
-                                            dtype: "3",
-                                            sphttps: "1",
-                                            otype: "ojson",
-                                            appVer: "V1.0.0",
-                                            app_version: "V1.0.0",
-                                            defn: "fhd",
-                                            rand_str: Bu(),
-                                            channel: "ysp_tx"
-                                        }
-                    // console.log(Bu())
-
-// console.log(p)
-// signature=window.Ru(p)
-// p.signature=signature
-// console.log( JSON.stringify(p))
 
 ///处理headerp
 Cu=window.Cu
-// Cu.get
-//
-// xu=window.xu
-//
-// i=xu(p)
-// s=''
-// c=''
-// Zc=window.Zc
-// y={
-//     "yspappid": "519748109",
-//     "input": "".concat(i, "-").concat(Zc(), "-").concat(s, "-").concat(c)
-// }
-// cctvh5.getSignature(y).then(res=>console.log('res',res))
-// Cu.getSdkData(p,(function(t) {
-//                                             g.headers = v(v({}, g.headers), t)
-//                                         }
-//                                         )).then(res=>console.log(res))
-
-
 c={
     "vid": "f0000543g0z",
     "version": "V1.0.0",
@@ -84670,35 +84654,27 @@ c={
     "isVr": false
 }
 ku=window.ku
-ku(c).then(res=>{
-    // console.log(res);
-    p=res.params
+ku1=window.getParams
+p=ku1(c)
+console.log('ku1',p);
+ console.log(JSON.stringify(p));
 
-    g=res.headers
 
 
-    console.log('p');
-    console.log(JSON.stringify(p));
-    console.log("----------------")
-    console.log('g');
-    console.log(g);
+getSdkData2=window.getSdkData2
 
-})
+reassToken=getSdkData2(p)
+reassToken.then(res=>{console.log('getSdkData2',res)})
 
-// ab=Ru({
-//     "vid": "f0000543g0z",
-//     "platform": "5910204",
-//     "guid": "lxzromby_kqzbkpnzo7",
-//     "cKey": "--01F82B51423EAAB1FF6EB5E0110A091EB2882EB09654856991778776F41E59538B310429AFDD314F223DF3FE8A9853AE8ACEC19B672AB91A256323AB7A3A1E82D0E8D2EC35ECAAB729AE89DD4090E534FA5D232142E5C87E1768B974E7283FB60AC912FEEF9A8D13E7872BD190E9DAFAAC5B445DDAF5C3E0C2C3A9BFD2BF2DF4CC3104E0D8E56C8ECBB30089B138921F77B0B5E08B9BD34BAF5AA7CF944CD89801",
-//     "adjust": 1,
-//     "encryptVer": "8.1",
-//     "dtype": "3",
-//     "sphttps": "1",
-//     "otype": "ojson",
-//     "appVer": "V1.0.0",
-//     "app_version": "V1.0.0",
-//     "defn": "fhd",
-//     "rand_str": "1WBtxd0qne",
-//     "channel": "ysp_tx"
-// })
-// console.log(ab)
+
+
+
+
+
+
+
+
+
+
+
+

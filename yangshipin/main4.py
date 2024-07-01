@@ -2,13 +2,13 @@ import requests
 import json
 
 guid = 'lxzromby_kqzbkpnzo7'
-seqid = '413'
-yspsdkinput = '41aeac9c981cbf963c5332aafff3e4e5'
-yspsdksign = '3ab9662c28f126ea1c3c9df02c5d891f'
+seqid = '14'
+yspsdkinput = 'baef53716051884c5e2744b34f6db053'
+yspsdksign = '512b698273e7560b35f29ff164b31745'
 yspappid = '519748109'
 
 headers = {
-    "request-id": "999999Dg1K0U8dqc1719684795188",
+    "request-id": "999999N1uUIyM1GX1719732048788",
 
     "seqid": seqid,
     "yspappid": yspappid,
@@ -40,7 +40,23 @@ cookies = {
     "vplatform": "109",
 }
 url = "https://player-api.yangshipin.cn/v1/player/get_video_info"
-data={"vid":"f0000543g0z","platform":"5910204","guid":"lxzromby_kqzbkpnzo7","cKey":"--01FAAD4C53120DF2A0583103DA6B7F611E693C4A29BBB2FE4F7B4069BBA1583E02BE05F41B6DD2126F40BF5EAF478E4355B4A4B58654B1981B839517650470FB22F741B7B0D1A04B1B45F616442ECEB6B10EB4C257323730A695CA5B4B3A0E420CC698B64EE960B369A05DBBF61D366F87F45FEFB68781D8377BB40B192565E4591FB5D487296411C42E4EBC043D24EDE886641E5268CF39397EE9DAF9EAF91329","adjust":1,"encryptVer":"8.1","dtype":"3","sphttps":"1","otype":"ojson","appVer":"V1.0.0","app_version":"V1.0.0","defn":"fhd","rand_str":"HwoOVxOHpC","channel":"ysp_tx","signature":"e2435185999e88505217f685b71a1625"}
+data={
+    "vid": "f0000543g0z",
+    "platform": "5910204",
+    "guid": "lxzromby_kqzbkpnzo7",
+    "cKey": "--0152C61A448E393970449B743EB17D9202F1261945C6427D2F8FB3B370C0D7DF045993062E9B98F2F10FF1CD37CA8B7E8320F1146DB59B0BCFCA72484CAECC37B6A062A690AA46C707BB9B38F56409D766CF0CF7DAF7BB4DAB86A241E2C0B0BB48480DF17286D88EC5711E8DB597D42BD5F25A4342B025FF737D24BADFFD470710AE0A17C56D3BE8314BA217C26A7F60B7602AC31CB79DC7D8451DCA6D7A042D2A",
+    "adjust": 1,
+    "encryptVer": "8.1",
+    "dtype": "3",
+    "sphttps": "1",
+    "otype": "ojson",
+    "appVer": "V1.0.0",
+    "app_version": "V1.0.0",
+    "defn": "fhd",
+    "rand_str": "JGJ1Ww1ROM",
+    "channel": "ysp_tx",
+    "signature": "99da3f7ea213f7c81ac659191d9c178e"
+}
 data = json.dumps(data, separators=(',', ':'))
 response = requests.post(url, headers=headers, cookies=cookies, data=data)
 

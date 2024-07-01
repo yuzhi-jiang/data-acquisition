@@ -32,16 +32,16 @@ cookies = {
     "nseqId": "441",
     "nrequest-id": "999999RnutHmQTEZ1719684905474"
 }
-url = "https://h5access.yangshipin.cn/web/open/token"
+url = "https://h5access.yangshipin.cn/web/open/token?yspappid=519748109&guid=ly13h79c_m952w3i4c4&vappid=59306155&vsecret=b42702bf7309a179d102f3d51b1add2fda0bc7ada64cb801&raw=1&version=v1&ts=1719724438123"
 params = {
-    "yspappid": "519748109",
-    "guid": "lxzromby_kqzbkpnzo7",
-    "vappid": "59306155",
-    "vsecret": "b42702bf7309a179d102f3d51b1add2fda0bc7ada64cb801",
-    "raw": "1",
-    "version": "v1",
-    "ts": "1719685030313",
-    "rnd": "ed76853e005238336264bb5a3514242c"
+    # "yspappid": "519748109",
+    # "guid": "lxzromby_kqzbkpnzo7",
+    # "vappid": "59306155",
+    # "vsecret": "b42702bf7309a179d102f3d51b1add2fda0bc7ada64cb801",
+    # "raw": "1",
+    # "version": "v1",
+    # "ts": "1719685030313",
+    # "rnd": "ed76853e005238336264bb5a3514242c"
 }
 response = requests.get(url, headers=headers, cookies=cookies, params=params)
 

@@ -2,12 +2,57 @@ global.self = global;
 self.location={
     href:''
 }
+async function getData(url,options) {
+    const res = await fetch(url,options);
+    if (res.ok) {
+        const data = await res.json();
+        return data;
+    }
+    throw new Error('Failed to fetch data');
+}
+
+
+
+// var url1='https://h5access.yangshipin.cn/web/open/token?yspappid=519748109&guid=ly0in2hz_ca8m7owgyd&vappid=59306155&vsecret=b42702bf7309a179d102f3d51b1add2fda0bc7ada64cb801&raw=1&version=v1&ts=1719689355111&rnd=67c73675affc4860f70669d9617ccee2';
+var url1='https://h5access.yangshipin.cn/web/open/token?yspappid=&guid=ly17r3ur_x82rm0abjg&vappid=59306155&vsecret=b42702bf7309a179d102f3d51b1add2fda0bc7ada64cb801&raw=1&version=v1&ts=1719731533636';
+
+var url2='https://anml.cn/api/v1/memo?creatorId=1&rowStatus=NORMAL&limit=10';
+
+
+
+
+headers = {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "cache-control": "no-cache",
+    "content-type": "application/json",
+    "dnt": "1",
+    "origin": "https://www.yangshipin.cn",
+    "pragma": "no-cache",
+    "priority": "u=1, i",
+    "referer": "https://www.yangshipin.cn/",
+    "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+}
+
+getData(url1,{
+    method:'GET',
+    headers:headers
+}).then(res=>{console.log(res)})
+
+
+
 window=global;
 // import fetch from 'node-fetch';
 // window.fetch = fetch;
 fetch1=import('node-fetch').then(async (nodeFetch) => {
-  const fetch = nodeFetch.default;
-    return fetch;
+  const fetch2 = nodeFetch.default;
+    return fetch2;
 }).catch(error => {
   console.error('Error:', error);
 });
@@ -1409,6 +1454,9 @@ document={
                 getSignature: function() {
                     return Ee
                 }
+                ,getSignature1: function() {
+                    return Ee1
+                }
             });
             var t = function t(r, n) {
                 function o(t, o, i) {
@@ -1611,176 +1659,172 @@ document={
             };
             O.name = "openapi",
             C();
-            var A, P = O, D = r(587), U = r.n(D), M = r(571), F = r.n(M), G = function(e) {
-                var t = {
-                    name: "",
-                    params: null,
-                    withCredentials: !1,
-                    customError: !1,
-                    resolveErrorMsg: null,
-                    formatResult: null
-                }
-                  , r = Object.assign(Object.assign({
-                    url: "",
-                    type: "get",
-                    contentType: "application/json",
-                    dataType: "json",
-                    headers: null,
-                    data: null
-                }, t), e);
-                "function" != typeof r.resolveErrorMsg && (r.resolveErrorMsg = function(e) {
-                    R.error("Request error:", e)
-                }
-                );
-                var n = r.url || "";
-                /^http/.test(n) || (n = "" + location.protocol + n);
-                var o = new (F())(n);
-                r.name || (r.name = "" + o.host + o.pathname);
-                var a = "GET";
-                r.type && "string" == typeof r.type && (a = r.type.toUpperCase());
-                var c = Object.assign({}, r);
-                Object.keys(t).forEach((e=>{
-                    delete c[e]
-                }
-                ));
-                var u = r.params;
-                if (u && "object" === s()(u)) {
-                    var f = {};
-                    Object.keys(u).forEach((e=>{
-                        var t = u[e];
-                        null != t && (f[e] = encodeURIComponent(t))
+
+            var A, P = O, D = r(587), U = r.n(D), M = r(571), F = r.n(M),
+                 getNP=function (e){
+                 var t = {
+                        name: "",
+                        params: null,
+                        withCredentials: !1,
+                        customError: !1,
+                        resolveErrorMsg: null,
+                        formatResult: null
                     }
-                    )),
-                    n = U()(o.href, f)
-                }
-                var l, p = {
-                    method: a,
-                    cache: "no-store",
-                    headers: Object.assign({
-                        "content-type": r.contentType || "",
-                            "origin": "https://www.yangshipin.cn"
-                    }, r.headers)
-                };
-                console.log("headersdfsdf:",p)
-                r.withCredentials && (p.credentials = "include"),
-                "object" === s()(r.data) ? p.body = JSON.stringify(r.data) : "string" == typeof r.data && (p.body = r.data);
-                console.log("call feahtchsdf")
-
-
-
-                var h = fetch1.then((fetch1)=>{
-                     console.log("sdfsdaf： n",n)
-                        console.log("sdfsdaf： p",p)
-                    async function customFetch(url, options) {
-                            try {
-                              const response = await fetch1(url, options);
-                              const data = await response.json();
-                              return data;
-                            } catch (error) {
-                              console.error('Error:', error);
+                        , r = Object.assign(Object.assign({
+                        url: "",
+                        type: "get",
+                        contentType: "application/json",
+                        dataType: "json",
+                        headers: null,
+                        data: null
+                    }, t), e);
+                    "function" != typeof r.resolveErrorMsg && (r.resolveErrorMsg = function (e) {
+                            R.error("Request error:", e)
+                        }
+                    );
+                    var n = r.url || "";
+                    /^http/.test(n) || (n = "" + location.protocol + n);
+                    var o = new (F())(n);
+                    r.name || (r.name = "" + o.host + o.pathname);
+                    var a = "GET";
+                    r.type && "string" == typeof r.type && (a = r.type.toUpperCase());
+                    var c = Object.assign({}, r);
+                    Object.keys(t).forEach((e => {
+                            delete c[e]
+                        }
+                    ));
+                    var u = r.params;
+                    if (u && "object" === s()(u)) {
+                        var f = {};
+                        Object.keys(u).forEach((e => {
+                                var t = u[e];
+                                null != t && (f[e] = encodeURIComponent(t))
                             }
-                          }
-
-                    var n='https://h5access.yangshipin.cn/web/open/token?yspappid=519748109&guid=lxzromby_kqzbkpnzo7&vappid=59306155&vsecret=b42702bf7309a179d102f3d51b1add2fda0bc7ada64cb801&raw=1&version=v1&ts=1719689095297&rnd=6b8a0155efddf6d2eeadae9ebada131b'
-                    customFetch(n, {
-                method: 'GET',
-                headers: {
-                "accept": "*/*",
-                "accept-language": "zh-CN,zh;q=0.9",
-                "cache-control": "no-cache",
-                "content-type": "application/json",
-                "dnt": "1",
-                "origin": "https://www.yangshipin.cn",
-                "pragma": "no-cache",
-                "priority": "u=1, i",
-                "referer": "https://www.yangshipin.cn/",
-                "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"",
-                "sec-ch-ua-mobile": "?0",
-                "sec-ch-ua-platform": "\"Windows\"",
-                "sec-fetch-dest": "empty",
-                "sec-fetch-mode": "cors",
-                "sec-fetch-site": "same-site",
-                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-            }
-  }).then(data => {
-                          console.log('sdfasdfdsfsd',data.data);
-                         return Promise.resolve(data.data)
-                        }).catch(e=>{});
-
-                //      fetch1(n, p)
-                //          .then((e=>{
-                //     // console.log('featchlog ',e)
-                //     l = e;
-                //     var t = r.dataType
-                //       , n = void 0 === t ? "json" : t
-                //       , o = !1;
-                //     if (l.status >= 200 && l.status <= 299 && (o = !0),
-                //     !o)
-                //         return null;
-                //     switch (n) {
-                //     case "text":
-                //         return e.text();
-                //     case "arrayBuffer":
-                //         return e.arrayBuffer();
-                //     case "blob":
-                //         return e.blob();
-                //     case "formData":
-                //         return e.formData();
-                //     default:
-                //         return e.json()
-                //     }
-                // }
-                //             ))
-                //          .then((e=>function(e)
-                // {
-                //             // console.log('featchlog2 ',e)
-                //     var t, r = e.response, n = e.data, o = e.conf, a = r ? r.status : 0, c = r ? r.statusText : "null", u = n;
-                //     if (R.debug(["request end. response.status: " + a, "result:"].join("\n"), u),
-                //     "json" === o.dataType)
-                //         if (u) {
-                //             var f = {};
-                //             if ("object" === s()(o.formatResult)) {
-                //                 var l = o.formatResult;
-                //                 Object.keys(l).forEach((e=>{
-                //                     var t = l[e];
-                //                     f[e] = i()(r, t)
-                //                 }
-                //                 ))
-                //             } else
-                //                 f = "function" === s()(o.formatResult) ? o.formatResult(u) : u;
-                //             if (o.customError)
-                //                 t = f;
-                //             else if (0 === f.ret)
-                //                 t = f.data;
-                //             else if (f.msg) {
-                //                 var p = new Error("(" + f.ret + ")" + f.msg);
-                //                 p.code = i()(f, "ret", 0),
-                //                 t = Promise.reject(p)
-                //             } else if (f.ret) {
-                //                 var h = new Error("(" + f.ret + ")网络暂不可用，请稍后打开");
-                //                 h.code = i()(f, "ret", 0),
-                //                 t = Promise.reject(h)
-                //             } else
-                //                 t = Promise.reject(new Error("接口返回格式错误:" + c))
-                //         } else
-                //             t = Promise.reject(new Error("无数据返回"));
-                //     else
-                //         t = n;
-                //     return t
-                // }(
-                //     {
-                //     response: l,
-                //     data: e,
-                //     conf: r
-                // })))
+                        )),
+                            n = U()(o.href, f)
+                    }
+                    var l, p = {
+                        method: a,
+                        cache: "no-store",
+                        headers: Object.assign({
+                            "content-type": r.contentType || "",
+                            "origin": "https://www.yangshipin.cn"
+                        }, r.headers)
+                    };
+                    r.withCredentials && (p.credentials = "include"),
+                        "object" === s()(r.data) ? p.body = JSON.stringify(r.data) : "string" == typeof r.data && (p.body = r.data);
+                    console.log("call feahtchsdf")
+                    return {"n":n,"p":p}
+            },
+                getToken2=function (e){
+                   var res=getNP(e)
+                    console.log('url',res.n)
+                   var h= getData(res.n,{
+                        method:'GET',
+                        headers:headers
+                    });
+                    return h
+                 },
+                G = function (e) {
+                    var t = {
+                        name: "",
+                        params: null,
+                        withCredentials: !1,
+                        customError: !1,
+                        resolveErrorMsg: null,
+                        formatResult: null
+                    }
+                        , r = Object.assign(Object.assign({
+                        url: "",
+                        type: "get",
+                        contentType: "application/json",
+                        dataType: "json",
+                        headers: null,
+                        data: null
+                    }, t), e);
+                    "function" != typeof r.resolveErrorMsg && (r.resolveErrorMsg = function (e) {
+                            R.error("Request error:", e)
+                        }
+                    );
+                    var n = r.url || "";
+                    /^http/.test(n) || (n = "" + location.protocol + n);
+                    var o = new (F())(n);
+                    r.name || (r.name = "" + o.host + o.pathname);
+                    var a = "GET";
+                    r.type && "string" == typeof r.type && (a = r.type.toUpperCase());
+                    var c = Object.assign({}, r);
+                    Object.keys(t).forEach((e => {
+                            delete c[e]
+                        }
+                    ));
+                    var u = r.params;
+                    if (u && "object" === s()(u)) {
+                        var f = {};
+                        Object.keys(u).forEach((e => {
+                                var t = u[e];
+                                null != t && (f[e] = encodeURIComponent(t))
+                            }
+                        )),
+                            n = U()(o.href, f)
+                    }
+                    var l, p = {
+                        method: a,
+                        cache: "no-store",
+                        headers: Object.assign({
+                            "content-type": r.contentType || "",
+                            "origin": "https://www.yangshipin.cn"
+                        }, r.headers)
+                    };
+                    console.log("headersdfsdf:", p)
+                    r.withCredentials && (p.credentials = "include"),
+                        "object" === s()(r.data) ? p.body = JSON.stringify(r.data) : "string" == typeof r.data && (p.body = r.data);
+                    console.log("call feahtchsdf")
 
 
-                })
-                h.then(res=>{
-                    console.log('h res:',res)
-                })
-                return h
-            };
+                    var h = fetch1.then((fetch1) => {
+                        console.log("sdfsdaf： n", n)
+                        console.log("sdfsdaf： p", p)
+
+                        async function customFetch(url, options) {
+                            try {
+                                const response = await fetch1(url, options);
+                                const data = await response.json();
+                                return data;
+                            } catch (error) {
+                                console.error('Error:', error);
+                            }
+                        }
+
+                        var n = 'https://h5access.yangshipin.cn/web/open/token?yspappid=519748109&guid=lxzromby_kqzbkpnzo7&vappid=59306155&vsecret=b42702bf7309a179d102f3d51b1add2fda0bc7ada64cb801&raw=1&version=v1&ts=1719689095297&rnd=6b8a0155efddf6d2eeadae9ebada131b'
+                        customFetch(n, {
+                            method: 'GET',
+                            headers: {
+                                "accept": "*/*",
+                                "accept-language": "zh-CN,zh;q=0.9",
+                                "cache-control": "no-cache",
+                                "content-type": "application/json",
+                                "dnt": "1",
+                                "origin": "https://www.yangshipin.cn",
+                                "pragma": "no-cache",
+                                "priority": "u=1, i",
+                                "referer": "https://www.yangshipin.cn/",
+                                "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"",
+                                "sec-ch-ua-mobile": "?0",
+                                "sec-ch-ua-platform": "\"Windows\"",
+                                "sec-fetch-dest": "empty",
+                                "sec-fetch-mode": "cors",
+                                "sec-fetch-site": "same-site",
+                                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+                            }
+                        }).then(data => {
+                            return Promise.resolve(data.data)
+                        }).catch(e => {
+                        });
+
+                    })
+
+                    return h
+                };
             function Y(e, t, r, n, o, i, a) {
                 try {
                     var s = e[i](a)
@@ -2279,6 +2323,34 @@ document={
                     }),
                     this.yspappid = (null == e ? void 0 : e.yspappid) || ""
                 }
+                fetchToken1() {
+                    var t, r, n, o, i, a, s, c;
+                    t = this.yspappid;
+                        L();
+                        r = E.guid;
+                        n = P.isTest() ? "h5api" : "h5access";
+                                    o = "https://" + n + ".yangshipin.cn/web/open/token";
+                                    i = j();
+                                    a = Date.now();
+                                    E.yspappid = t;
+                                    E.ts = "" + a;
+                                    // s = te();
+                             var res= getToken2({
+                                        url: o,
+                                        withCredentials: !0,
+                                        params: Object.assign(Object.assign({
+                                            yspappid: t,
+                                            guid: r
+                                        }, N), {
+                                            version: i,
+                                            ts: a,
+                                            rnd: s
+                                        })
+                                    });
+
+                    return res;
+
+                }
                 fetchToken() {
                     return we(this, void 0, void 0, I().mark((function e() {
                         var t, r, n, o, i, a, s, c;
@@ -2312,7 +2384,7 @@ document={
                                     E.ts = "" + a,
                                     s = te(),
                                     e.next = 19,
-                                    G({
+                                    getToken({
                                         url: o,
                                         withCredentials: !0,
                                         params: Object.assign(Object.assign({
@@ -2336,6 +2408,15 @@ document={
                         ), e, this)
                     }
                     )))
+                }
+                refreshToken1(){
+                    var t, r, n, o, i;
+                    t = Date.now();
+                   var retchToken=this.fetchToken1()
+                    retchToken.then(function(res){
+                        console.log('token:',res)
+                    })
+                    return retchToken;
                 }
                 refreshToken() {
                     return we(this, void 0, void 0, I().mark((function e() {
@@ -2368,6 +2449,18 @@ document={
                     }
                     )))
                 }
+                getCacheToken1() {
+                       return   this.refreshToken1().then(res=>{
+                              n = this.yspappid;
+                                    E.yspappid = n;
+                                    E.token = r;
+                                    E.input = e;
+                                    // o = Date.now();
+                                    // R.debug(Oe, "compute signature start");
+                                    i = re();
+                                    return Promise.resolve(i);
+                         })
+                }
                 getCachedToken() {
                     return we(this, void 0, void 0, I().mark((function e() {
                         var t;
@@ -2399,6 +2492,9 @@ document={
                         ), e, this)
                     }
                     )))
+                }
+                getSignature1(e) {
+                    return this.getCacheToken1(e)
                 }
                 getSignature(e) {
                     return void 0 === e && (e = ""),
@@ -2488,8 +2584,45 @@ document={
                 }
                 ))
             }
+
+            async function Ee1(e) {
+                var r, n, o, i, a, s, c, u, f, l, p, h, d;
+                r = Object.assign({
+                    guid: "",
+                    input: ""
+                }, e),
+                    n = r.yspappid,
+                    o = void 0 === n ? "" : n,
+                    i = r.input,
+                    a = void 0 === i ? "" : i,
+                    s = r.guid,
+                    c = void 0 === s ? "" : s,
+                    u = {
+                        openapi_signature: ""
+                    },
+                    L()
+                f = ''
+                if (!f || f.length <= 0) {
+                    c && (E.guid = c);
+                    l = (new Date).getTime();
+                    var pog = Re.get(o)
+                    if (pog) {
+                        p = pg
+                    } else {
+                        p = new _e({
+                            yspappid: o
+                        })
+
+                        Re.set(o, p)
+                    }
+                    var u1
+                    var token=await p.getSignature1(a)
+                    u.openapi_signature=token.data.token
+                }
+                return u
+            }
             function Ee(e) {
-                console.log("Ex",e)
+
                 return xe(this, void 0, void 0, I().mark((function t() {
                     var r, n, o, i, a, s, c, u, f, l, p, h, d;
                     return I().wrap((function(t) {

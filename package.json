@@ -2,6 +2,7 @@
   "name": "Reptiles",
   "version": "1.0.0",
   "dependencies": {
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "wasm2js": "^0.2.0"
   }
 }
